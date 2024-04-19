@@ -1,0 +1,20 @@
+from question_model import Question
+from data import question_data
+from quiz_brain import QuizzBrain
+
+question_bank = []
+
+for bank in question_data:
+    #q_object = Question("text","answer")
+    q_txt = bank["text"]
+    q_ans = bank["answer"]
+    # question object 
+    new_ques = Question(q_txt, q_ans)
+    question_bank.append(new_ques)
+print(question_bank)
+
+quiz = QuizzBrain(question_bank)
+
+while quiz.Que_still_remain():#if quiz still on
+    quiz.next_quest()
+print("quiz completed!")
